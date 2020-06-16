@@ -66,7 +66,7 @@ def create_customer():
             #return jsonify(out)
             # return render_template()
         except Exception as e:
-            print(e)
+            #print(e)
             flash('Customer creation error')
             #out = {'success': False, 'message': "some error occurred while creating user"}
             #return jsonify(out)
