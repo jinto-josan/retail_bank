@@ -8,9 +8,10 @@ from sqlalchemy import text
 from application.forms import LoginForm
 from application import db
 from application.db_models import Userstore
-'''db.drop_all()
+db.drop_all()
 db.create_all()
-db.session.commit()'''
+db.session.add(Userstore(loginid='admin',password='admin',user_type='E'))
+db.session.commit()
 
 @app.route('/',methods = ['GET','POST'])
 @app.route('/login', methods = ['GET', 'POST'])
@@ -32,7 +33,7 @@ def login():
     return render_template('login.html', form = form)
 
 
-@app.route('/createuser', methods=['GET', 'POST'])
+@app.route('/create-customer', methods=['GET', 'POST'])
 def createuser():
     if request.method == 'POST':
         # print(request.values)
@@ -63,4 +64,4 @@ def createuser():
             out = {'success': False, 'message': "some error occurred while creating user"}
             return jsonify(out)
     else:
-        return render_template('create_user.html')
+        return render_template('create_customer.html')

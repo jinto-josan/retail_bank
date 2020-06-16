@@ -18,6 +18,6 @@ class CreateAccountForm(FlaskForm):
     submit = SubmitField("Login")
 
 class CustomerQueryForm(FlaskForm):
-    customerid = IntegerField("Customer Id",validators=[NumberRange(min=100000000,max=999999999)]render_kw={'Placeholder':'Customer Id'})
+    customerid = IntegerField("Customer Id",validators=[NumberRange(min=100000000,max=999999999)],render_kw={'Placeholder':'Customer Id'})
     ssnid = PasswordField("Password", render_kw={'Placeholder':'Password'})
     submit = SubmitField("Login")
