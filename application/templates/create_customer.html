@@ -1,9 +1,87 @@
-{% extends "customer_executive_layout.html" %}
-{% block content %}
+{% extends 'layout.html' %}
+{% block page_content %}
+<h2>create user</h2>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<form method="post" id="test-form">
+    <div class="form-group">
+    <label>customer_ssnid</label>
+    <input type="number" name="customer_ssnid" placeholder="customer_ssnid"/>
+  </div>
 
-<h1> Welcome to customer creation</h1>
+  <div class="form-group">
+    <label>customer_name</label>
+    <input type="text" name="customer_name" placeholder="customer_name"/>
+  </div>
+
+  <div class="form-group">
+    <label>age</label>
+    <input type="number" name="age" placeholder="age"/>
+  </div>
+
+  <div class="form-group">
+    <label>address_lane_1</label>
+    <input type="text" name="address1" placeholder="address1"/>
+  </div>
+  <div class="form-group">
+    <label>address_lane_2</label>
+    <input type="text" name="address2" placeholder="address2"/>
+  </div>
+    <div class="form-group">
+    <label>city</label>
+    <input type="text" name="city" placeholder="city"/>
+  </div>
+<!--  <div class="form-group">-->
+<!--    <label>city</label>-->
+<!--    <input type="text" name="city" placeholder="city"/>-->
+<!--  </div>-->
+  <div class="form-group">
+    <label>state</label>
+    <input type="text" name="state" placeholder="state"/>
+  </div>
+  <div class="form-group">
+    <label>message</label>
+    <input type="text" name="message" placeholder="message"/>
+  </div>
+    <button type="submit" id="sub-button" class="btn btn-primary">submit</button>
+</form>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
+<script>
+var $form = $('form#test-form');
 
+$('#submit-form').on('click', function(e) {
+  e.preventDefault();
+    var jqxhr = $.ajax({
+    url: 'http://127.0.0.1:5000/createuser',
+    method: "GET",
+    dataType: "json",
+    data: $form.serialize(),
+    success: function(result){
+        console.log(result);
+        if(result['success']){
+          Swal.fire({
+                icon: 'success',
+                title: result["message"],
+                showConfirmButton: false,
+                timer: 2500
+              })
+        }else{
+        Swal.fire({
+              icon: 'error',
+              title: result["message"],
+              text: 'Some thing went wrong',
+              timer: 3000
+            })
+        }
+    }
+});
+});
+</script>
 
 {% endblock %}

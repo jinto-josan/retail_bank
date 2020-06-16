@@ -9,49 +9,26 @@ class Userstore(db.Model):
     #timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
 
-'''class Customer(db.Model):
+class Customer(db.Model):
     __tablename__ = 'customers'
     # as per pdf 5.1.9 option 1
-<<<<<<< HEAD
-    sno = db.Column(db.Integer, primary_key=True)
-    customer_ssnid = db.Column(db.Integer)
-    customer_id = db.Column(db.Integer)
-    customer_name = db.Column(db.String(64))
-=======
     # sno = db.Column(db.Integer, primary_key=True)
     customer_ssnid = db.Column(db.Integer, primary_key=True)
     customer_name = db.Column(db.String(64))
     # account_id = db.Column(db.Integer, db.ForeignKey('accounts.accounts_id'))
->>>>>>> bee3b940f5b34218854a2c6530afafd7e055cb6a
     age = db.Column(db.Integer)
     address_lane_1 = db.Column(db.String(64))
     address_lane_2 = db.Column(db.String(64))
     city = db.Column(db.String(64))
     state = db.Column(db.String(64))
-<<<<<<< HEAD
-    balance = db.Column(db.Integer)
-=======
     # balance = db.Column(db.Integer)
     # account_type = db.Column(db.String(64))
     status = db.Column(db.String(64))
     message = db.Column(db.String(64))
     # last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
->>>>>>> bee3b940f5b34218854a2c6530afafd7e055cb6a
-
-'''
 class Accounts(db.Model):
     __tablename__ = 'accounts'
-<<<<<<< HEAD
-    sno = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    customer_id = db.Column(db.Integer)
-    account_id = db.Column(db.Integer)
-    account_type = db.Column(db.String(64))
-    status = db.Column(db.String(64))
-    balance = db.Column(db.Integer)
-    message = db.Column(db.String(64))
-    last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
-=======
     sno = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_ssnid'))
     account_id = db.Column(db.Integer, index=True)
@@ -60,4 +37,3 @@ class Accounts(db.Model):
     # balance_deducted = db.Column(db.Integer)
     account_type = db.Column(db.String(64))
     timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
->>>>>>> bee3b940f5b34218854a2c6530afafd7e055cb6a
