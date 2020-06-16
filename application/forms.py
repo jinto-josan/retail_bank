@@ -8,8 +8,8 @@ from wtforms.validators import InputRequired,Length,NumberRange
 
 
 class LoginForm(FlaskForm):
-    login = StringField("Login Id",validators=[InputRequired(),Length(max=30,message='Maximum 15 characters')],render_kw={'Placeholder':'Login Id'})
-    password = PasswordField("Password",validators=[InputRequired(),Length(max=15,message='Maximum 15 characters')], render_kw={'Placeholder':'Password'})
+    login = StringField("Login Id",render_kw={'Placeholder':'Login Id'})
+    password = PasswordField("Password", render_kw={'Placeholder':'Password'})
     submit = SubmitField("Login")
 
 class CreateAccountForm(FlaskForm):

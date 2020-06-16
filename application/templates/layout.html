@@ -9,15 +9,14 @@
 </head>
 <body>
   <div class="container">
-<!--    {% for msg in get_flashed_messages() %}-->
-<!--    &lt;!&ndash; bootstrap warning &ndash;&gt;-->
-<!--    <div class="alert, alert-danger alert-dismissible fade show" role="alert">-->
-<!--      <button type="button" class="close" data-dismiss="alert">&times;</button>-->
-<!--      {{ msg }}-->
-<!--    </div>-->
-<!--    {% endfor %}-->
-    {% block page_content %}
-    {% endblock %}
+    {% for msg in get_flashed_messages() %}
+     <div class="alert alert-danger" role="alert">
+       <button type="button" class="close" data-dismiss="alert">&times;</button>
+       {{ msg }}
+     </div>
+     {% endfor %}
+     {% block page_content %}
+     {% endblock %}
   </div>
 
 <!--bootstrap script links-->

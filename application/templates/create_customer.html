@@ -1,55 +1,57 @@
-{% extends 'custotmer_executive_layout.html' %}
-{% block page_content %}
-<h2>create user</h2>
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+
+<h2>Create Customer</h2>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+
+
 <form method="post" id="test-form">
+   <div class="form-group">
+     <label>customer_ssnid</label>
+     <input type="number" name="customer_ssnid" placeholder="customer_ssnid"/>
+   </div>
+   <div class="form-group">
+     <label>customer_name</label>
+     <input type="text" name="customer_name" placeholder="customer_name"/>
+    </div>
     <div class="form-group">
-    <label>customer_ssnid</label>
-    <input type="number" name="customer_ssnid" placeholder="customer_ssnid"/>
-  </div>
-
-  <div class="form-group">
-    <label>customer_name</label>
-    <input type="text" name="customer_name" placeholder="customer_name"/>
-  </div>
-
-  <div class="form-group">
-    <label>age</label>
-    <input type="number" name="age" placeholder="age"/>
-  </div>
-
-  <div class="form-group">
-    <label>address_lane_1</label>
-    <input type="text" name="address1" placeholder="address1"/>
-  </div>
-  <div class="form-group">
-    <label>address_lane_2</label>
-    <input type="text" name="address2" placeholder="address2"/>
-  </div>
+      <label>age</label>
+      <input type="number" name="age" placeholder="age"/>
+    </div>
     <div class="form-group">
-    <label>city</label>
-    <input type="text" name="city" placeholder="city"/>
-  </div>
+      <label>address_lane_1</label>
+      <input type="text" name="address1" placeholder="address1"/>
+    </div>
+    <div class="form-group">
+      <label>address_lane_2</label>
+      <input type="text" name="address2" placeholder="address2"/>
+    </div>
+    <div class="form-group">
+      <label>city</label>
+      <input type="text" name="city" placeholder="city"/>
+    </div>
 <!--  <div class="form-group">-->
 <!--    <label>city</label>-->
 <!--    <input type="text" name="city" placeholder="city"/>-->
 <!--  </div>-->
-  <div class="form-group">
-    <label>state</label>
-    <input type="text" name="state" placeholder="state"/>
-  </div>
-  <div class="form-group">
-    <label>message</label>
-    <input type="text" name="message" placeholder="message"/>
-  </div>
-    <button type="submit" id="sub-button" class="btn btn-primary">submit</button>
-</form>
-<script
-  src="https://code.jquery.com/jquery-3.4.1.min.js"
-  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-  crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <div class="form-group">
+      <label>state</label>
+      <input type="text" name="state" placeholder="state"/>
+    </div>
+    <div class="form-group">
+      <label>message</label>
+      <input type="text" name="message" placeholder="message"/>
+    </div>
+      <button type="submit" id="sub-button" class="btn btn-primary">submit</button>
+    </form>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+    crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
 <script>
