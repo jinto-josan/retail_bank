@@ -1,0 +1,16 @@
+    {% extends "layout.html" %}
+
+    {% block page_content %}
+
+    <form name="login" action = "" method = "POST">
+      {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+      <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
+         {{ form.login.label }}<br>
+         {{ form.login }}
+         <br>
+         {{ form.password.label }}<br>
+         {{ form.password }}
+         <br>  <br>
+         {{ form.submit }}
+            </div>
+ {% endblock %}

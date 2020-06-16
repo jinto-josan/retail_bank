@@ -1,15 +1,13 @@
 from application import db
 
-
 class Userstore(db.Model):
-    __tablename__ = 'userstore'
-    login = db.Column(db.String(64), primary_key=True)
-    password = db.Column(db.String(64))
-    user_type = db.Column(db.String(64))
-    timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
+    __tablename__='userstore'
+    loginid= db.Column(db.String(64),primary_key=True)
+    password= db.Column(db.String(64))
+    #user_type = db.Column(db.String(64))
+    #timestamp= db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
-
-class Customer(db.Model):
+'''class Customer(db.Model):
     __tablename__ = 'customers'
     # as per pdf 5.1.9 option 1
     sno = db.Column(db.Integer, primary_key=True)
@@ -35,8 +33,4 @@ class Accounts(db.Model):
     balance = db.Column(db.Integer)
     balance_added = db.Column(db.Integer)
     balance_deducted = db.Column(db.Integer)
-    timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
-
-
-
-
+    timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))'''
