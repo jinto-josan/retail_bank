@@ -9,6 +9,7 @@ from application.db_models import Userstore
 db.drop_all()
 db.create_all()
 db.session.add(Userstore(loginid='admin',password='admin'))
+db.session.add(Userstore(loginid='jinto',password='password'))
 db.session.commit()
 
 @app.route('/',methods = ['GET', 'POST'])
