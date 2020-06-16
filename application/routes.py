@@ -70,6 +70,6 @@ def create_customer():
             flash('Customer creation error')
             #out = {'success': False, 'message': "some error occurred while creating user"}
             #return jsonify(out)
-        return render_template('create_customer.html')
+        return redirect(url_for('create_customer'))
     else:
         return render_template('create_customer.html')
