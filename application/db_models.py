@@ -10,6 +10,7 @@ class Userstore(db.Model):
 '''class Customer(db.Model):
     __tablename__ = 'customers'
     # as per pdf 5.1.9 option 1
+    sno = db.Column(db.Integer, primary_key=True)
     customer_ssnid = db.Column(db.Integer)
     customer_name = db.Column(db.String(64))
     account_id = db.Column(db.Integer, db.ForeignKey('accounts.accounts_id'))
@@ -22,11 +23,12 @@ class Userstore(db.Model):
     account_type = db.Column(db.String(64))
     status = db.Column(db.String(64))
     message = db.Column(db.String(64))
-    last_updated = db.Column(db.DateTime(db.ForeignKey('accounts.timestamp')))
+    last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
 
 class Accounts(db.Model):
     __tablename__ = 'accounts'
+    sno = db.Column(db.Integer, primary_key=True)
     account_id = db.Column(db.Integer, index=True)
     balance = db.Column(db.Integer)
     balance_added = db.Column(db.Integer)
