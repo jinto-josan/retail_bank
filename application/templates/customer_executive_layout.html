@@ -6,7 +6,7 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customer Management</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="/create_customer">Create Customer</a>
+      <a class="dropdown-item" href="/create_customer ">Create Customer</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="#">Update Customer</a>
       <div class="dropdown-divider"></div>
@@ -17,9 +17,9 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Management</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Create Account</a>
+      <a class="dropdown-item" href="/create_account">Create Account</a>
       <div class="dropdown-divider"></div>
-      <a class="dropdown-item" href="#">Delete Account</a>
+      <a class="dropdown-item" href="/query_customer">Delete Account</a>
     </div>
   </li>
 
@@ -35,6 +35,12 @@
     <a class="nav-link" href="#">Logout</a>
   </li>
 </ul>
+{% for msg in get_flashed_messages() %}
+ <div class="alert alert-danger" role="alert">
+   <button type="button" class="close" data-dismiss="alert">&times;</button>
+   {{ msg }}
+ </div>
+ {% endfor %}
 {% block content %}
 {% endblock %}
 {% endblock %}
