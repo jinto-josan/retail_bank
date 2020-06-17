@@ -1,0 +1,14 @@
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+<h2>Delete customer</h2>
+<p>please enter the customer_id</p>
+<form method="post" id="test-form">
+   <div class="form-group">
+     <label>customer_id</label>
+     <input type="text" pattern="\d*" name="customer_id" minlength="9" maxlength="9" placeholder="customer_id" required/>
+   </div>
+    <button type="submit" id="sub-button" class="btn btn-primary">submit</button>
+</form>
+
+{% endblock %}

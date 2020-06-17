@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="table-responsive">
-  <table class="table table-stripped table-hover ">
+  <table class="table table-stripped table-hover " id="account-table">
     <thead>
       <tr class="bg-warning">
         <th scope="col">Customer_ID</th>
@@ -22,10 +22,22 @@
         <td>{{ item[2] }}</td>
         <td>{{ item[3] }}</td>
         <td>{{ item[4] }}</td>
-        <td>Refresh</td>
+        <td><button class="btn btn-primary"  id="{{ item[5] }}" onClick="func(this,this.id)" >Refresh</button></td>
       </tr>
     {% endfor %}
     </tbody>
   </table>
 </div>
+<script>
+  function func(ele,clicked_id) {
+    fetch('/status_particular/'+clicked_id).then(function(response){
+      response.json().then(function(data){
+          var row =ele.closest('tr');
+          row.cells[2].textContent=data.status;
+          row.cells[3].textContent=data.message;
+          row.cells[4].textContent=data.last_updated;
+    });
+  });
+  }
+</script>
 {% endblock %}
