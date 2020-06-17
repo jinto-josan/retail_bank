@@ -140,6 +140,7 @@ def delete_account():
     chcs = list(zip(ids,ids))
     print(chcs)
     form.account_id_choices.choices= chcs
+    form.account_type.data = [row[0] for row in db.engine.execute("SELECT account_type FROM accounts WHERE account_id= :x",x=chcs[0][0])][0]
     if form.validate_on_submit():
         print('deleted')
         db.engine.execute("DELETE FROM accounts WHERE account_id= :x",x=form.account_id_choices.data)
@@ -150,3 +151,9 @@ def delete_account():
         for key in form.errors:
             flash('Invalid '+ key)
     return render_template('delete_account.html', form = form)
+
+@app.route('/get_type/<account_id>',methods=['GET','POST'])
+def get_status(account_id):
+    response = [row[0] for row in db.engine.execute("SELECT account_type FROM accounts WHERE account_id= :x",x=account_id)][0]
+    response_obj={'account_type':response}
+    return jsonify(response_obj)

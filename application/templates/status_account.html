@@ -1,0 +1,31 @@
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+
+<div class="table-responsive">
+  <table class="table table-stripped table-hover ">
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">Customer_ID</th>
+        <th scope="col">Account_Type</th>
+        <th scope="col">Status</th>
+        <th scope="col">Message</th>
+        <th scope="col">Last Updated</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in accounts %}
+      <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td>{{ item[4] }}</td>
+        <td>Refresh</td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

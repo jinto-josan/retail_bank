@@ -14,4 +14,24 @@
     <br>
     {{ form.submit }}
   </div>
+</form>
+
+<script>
+  let id_select = document.getElementById('account_id_choices');
+  let acnt_type = document.getElementById('account_type');
+  id_select.onchange =function(){
+    acnt_id = id_select.value;
+    //alert(acnt_id)
+    fetch('/get_type/'+acnt_id).then(function(response){
+      response.json().then(function(data){
+        //alert(data);
+        console.table(data);
+        //let optn = 'value="'+data.account_type+'"';
+        //acnt_type.innerHTML =optn;
+        acnt_type.value=data.account_type;
+      });
+    });
+  }
+</script>
+
  {% endblock %}

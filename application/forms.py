@@ -15,7 +15,7 @@ class LoginForm(FlaskForm):
 class CreateAccountForm(FlaskForm):
     customer_id = IntegerField("Customer Id",validators=[InputRequired(),NumberRange(min=100000000,max=999999999)],render_kw={'Placeholder':'Customer Id'})
     account_id = IntegerField("Account Id",validators=[InputRequired(),NumberRange(min=100000000,max=999999999)],render_kw={'Placeholder':'Account Id'})
-    account_type =SelectField("Account Type",choices=[('S', 'Savings'), ('C', 'Current')],render_kw={'Placeholder':'Select'})
+    account_type =SelectField("Account Type",choices=[('Savings', 'Savings'), ('Current', 'Current')],render_kw={'Placeholder':'Select'})
     dep_amt = IntegerField("Deposit Amount",default=0,validators=[InputRequired(message='Customer Id required'),NumberRange(min=0,message='Amount shouldnot be negitive')], render_kw={'Placeholder':'Amount'})
     submit = SubmitField("Submit")
 
