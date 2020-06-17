@@ -37,7 +37,7 @@ class Accounts(db.Model):
     # if this is not done then customer id wont be displayed in the accounts table
     account_id = db.Column(db.Integer, index=True)
     balance = db.Column(db.Integer)
-    # balance_added = db.Column(db.Integer)
+    balance_credit_debit = db.Column(db.String(64))
     # balance_deducted = db.Column(db.Integer)
     account_type = db.Column(db.String(64))
     message = db.Column(db.String(64))
