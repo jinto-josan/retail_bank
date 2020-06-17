@@ -1,0 +1,24 @@
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+
+<form name="create_account" action = "" method = "POST">
+  {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
+    {{ form.customer_id.label }}<br>
+    {{ form.customer_id }}
+    <br>
+    {{ form.account_id.label }}<br>
+    {{ form.account_id }}
+    <br>
+    {{ form.account_type.label }}<br>
+    {{ form.account_type }}
+    <br>
+    <br>
+    {{ form.dep_amt.label }}<br>
+    {{ form.dep_amt }}
+    <br>
+    <br>
+    {{ form.submit }}
+  </div>
+ {% endblock %}

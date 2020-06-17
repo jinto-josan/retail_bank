@@ -1,0 +1,21 @@
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+<form method="post">
+<table>
+    <tbody>
+    {% for i, v in data %}
+        <tr>
+            <td>{{i}}</td>
+            <td>{{v}}</td>
+        </tr>
+        <input type="hidden" name="{{i}}" value="{{v}}"/>
+    {% endfor %}
+    <tr>
+        <td><button type="submit" id="sub-button" class="btn btn-primary">confirm</button></td>
+        <td><a type="submit" href="{{create_customer}}" class="btn btn-primary">cancel</a></td>
+    </tr>
+    </tbody>
+</table>
+</form>
+{% endblock %}

@@ -2,8 +2,8 @@
 To define all the forms for data input
 '''
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField,SubmitField,IntegerField
-from wtforms.validators import InputRequired,Length,NumberRange
+from wtforms import StringField,PasswordField,SubmitField,IntegerField, SelectField
+from wtforms.validators import InputRequired,Length,NumberRange, Optional
 
 
 
@@ -13,11 +13,27 @@ class LoginForm(FlaskForm):
     submit = SubmitField("Login")
 
 class CreateAccountForm(FlaskForm):
-    login = StringField("Login Id",render_kw={'Placeholder':'Login Id'})
-    password = PasswordField("Password", render_kw={'Placeholder':'Password'})
-    submit = SubmitField("Login")
+    customer_id = IntegerField("Customer Id", validators=[InputRequired(), NumberRange(min=100000000, max=999999999)],
+                               render_kw={'Placeholder': 'Customer Id'})
+    account_id = IntegerField("Account Id", validators=[InputRequired(), NumberRange(min=100000000, max=999999999)],
+                              render_kw={'Placeholder': 'Account Id'})
+    account_type = SelectField("Account Type", choices=[('S', 'Savings'), ('C', 'Current')],
+                               render_kw={'Placeholder': 'Select'})
+    dep_amt = IntegerField("Deposit Amount", default=0, validators=[InputRequired(message='Customer Id required'),
+                                                                    NumberRange(min=0,
+                                                                                message='Amount shouldnot be negitive')],
+                           render_kw={'Placeholder': 'Amount'})
+    submit = SubmitField("Submit")
 
 class CustomerQueryForm(FlaskForm):
-    customerid = IntegerField("Customer Id",validators=[NumberRange(min=100000000,max=999999999)],render_kw={'Placeholder':'Customer Id'})
-    ssnid = PasswordField("Password", render_kw={'Placeholder':'Password'})
-    submit = SubmitField("Login")
+    customer_id = IntegerField("Customer Id", validators=[Optional(), NumberRange(min=100000000, max=999999999)],
+                               render_kw={'Placeholder': 'Customer Id'})
+    ssn = IntegerField("Customer SSN", validators=[Optional(), NumberRange(min=100000000, max=999999999)],
+                       render_kw={'Placeholder': 'SSN'})
+    submit = SubmitField("Submit")
+
+
+class DeleteAccountForm(FlaskForm):
+    account_id_choices = SelectField("Account ID", coerce=int, choices=[], render_kw={'Placeholder': 'Select'})
+    account_type = StringField("Account Type", default='Savings', render_kw={'Placeholder': 'Select'})
+    submit = SubmitField("Delete")
