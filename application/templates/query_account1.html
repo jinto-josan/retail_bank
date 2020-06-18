@@ -1,8 +1,8 @@
-{% extends "customer_executive_layout.html" %}
+
+{% extends "cashier_layout.html" %}
 
 {% block content %}
-
-<form name="create_account" action = "" method = "POST">
+<form name='query_account1' action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
   <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
     {{ form.customer_id.label }}<br>
@@ -13,8 +13,15 @@
     {{ form.ssn.label }}<br>
     {{ form.ssn }}
     <br>
+    <h3> OR </h3>
+    <br>
+    <br>
+    {{ form.account_id.label }}<br>
+    {{ form.account_id }}
+    <br>
     <br>
     {{ form.submit }}
   </div>
   </form>
- {% endblock %}
+
+{% endblock %}

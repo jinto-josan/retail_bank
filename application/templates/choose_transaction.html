@@ -1,0 +1,22 @@
+{% extends "cashier_layout.html" %}
+
+{% block content %}
+<form action = "" method = "POST">
+  {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
+    {{ form.account_id_choices.label }}<br>
+    {{ form.account_id_choices }}
+    <br>
+    <br>
+    {{ form.deposit }}
+    <br>
+    <br>
+    {{ form.withdraw }}
+    <br>
+    <br>
+    {{ form.transfer }}
+    <br>
+
+  </div>
+</form>
+{% endblock %}

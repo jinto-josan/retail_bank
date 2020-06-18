@@ -37,3 +37,19 @@ class DeleteAccountForm(FlaskForm):
     account_id_choices = SelectField("Account ID", coerce=int, choices=[], render_kw={'Placeholder': 'Select'})
     account_type = StringField("Account Type", render_kw={'Placeholder': 'Select'})
     submit = SubmitField("Delete")
+
+
+class AccountQueryForm1(FlaskForm):
+    customer_id = IntegerField("Customer Id", validators=[Optional(), NumberRange(min=100000000, max=999999999)],
+                               render_kw={'Placeholder': 'Customer Id'})
+    ssn = IntegerField("Customer SSN", validators=[Optional(), NumberRange(min=100000000, max=999999999)],
+                       render_kw={'Placeholder': 'SSN'})
+    account_id = IntegerField("Account Id", validators=[Optional(), NumberRange(min=100000000, max=999999999)],
+                       render_kw={'Placeholder': 'Account ID'})
+    submit = SubmitField("Submit")
+
+class TransactionForm(FlaskForm):
+    account_id_choices = SelectField("Account ID", coerce=int, choices=[], render_kw={'Placeholder': 'Select'})
+    deposit = SubmitField("Deposit")
+    withdraw = SubmitField("Withdraw")
+    transfer = SubmitField("Transfer")
