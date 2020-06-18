@@ -1,23 +1,22 @@
 {% extends "customer_executive_layout.html" %}
 
 {% block content %}
+<h2>Confirm delete customer</h2>
 <form method="post">
 <div class="row justify-content-center col-auto">
 <table class="table table-hover text-center">
     <tbody>
     {% for i, v in data %}
         <tr>
-            <td class="bg-info">{{i}}</td>
+            <td class="table-info">{{i}}</td>
             <td>{{v}}</td>
         </tr>
         <input type="hidden" name="{{i}}" value="{{v}}"/>
     {% endfor %}
-    <tr>
-        <td><button type="submit" id="sub-button" class="btn btn-primary">confirm</button></td>
-        <td><a type="submit" href="{{create_customer}}" class="btn btn-primary">cancel</a></td>
-    </tr>
     </tbody>
 </table>
     </div>
-</form>
+    <button type="submit" id="sub-button" class="btn btn-primary center-block">confirm</button>
+</form><br>
+<a href="{{create_customer}}"><button type="submit" class="btn btn-primary center-block">Cancel</button></a>
 {% endblock %}
