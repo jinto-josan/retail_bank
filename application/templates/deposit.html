@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+{% block page_content %}
+<form method="post">
+<table>
+    <tbody>
+        {% for i, v in data %}
+            <tr>
+                <td>{{i}}</td>
+                <td>{{v}}</td>
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>Deposit Amount</td>
+            <td><input type="number" name="deposit" placeholder="enter deposit amount" required/></td>
+        </tr>
+    </tbody>
+</table>
+    <input type="hidden" name="account_id" value="{{data[1][1]}}"/>
+    <button type="submit" class="btn btn-primary">Submit</button><a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+</form>
+{% endblock %}

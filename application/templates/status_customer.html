@@ -1,0 +1,41 @@
+{% extends "customer_executive_layout.html" %}
+
+{% block content %}
+
+<div class="table-responsive">
+  <table class="table table-stripped table-hover " id="account-table">
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">SSN</th>
+        <th scope="col">Status</th>
+        <th scope="col">Message</th>
+        <th scope="col">Last Updated</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in accounts %}
+      <tr>
+        <td>{{ item[0] }}</td>
+        <td>{{ item[1] }}</td>
+        <td>{{ item[2] }}</td>
+        <td>{{ item[3] }}</td>
+        <td><button class="btn btn-primary"  id="{{ item[4] }}" onClick="func(this,this.id)" >Refresh</button></td>
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script>
+  function func(ele,clicked_id) {
+    fetch('/status_customer_particular/'+clicked_id).then(function(response){
+      response.json().then(function(data){
+          var row =ele.closest('tr');
+          row.cells[1].textContent=data.status;
+          row.cells[2].textContent=data.message;
+          row.cells[3].textContent=data.last_updated;
+    });
+  });
+  }
+</script>
+{% endblock %}

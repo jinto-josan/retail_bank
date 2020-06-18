@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+{% block page_content %}
+<h2>Transfer successful</h2>
+<table>
+    <tbody>
+    {% for i, v in data %}
+            <tr>
+                <td>{{i}}</td>
+                <td>{{v}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+{% endblock %}

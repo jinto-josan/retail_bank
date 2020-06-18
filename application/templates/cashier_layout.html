@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block page_content %}
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link active" href="account_query1">Account Details</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/statement">Account Statement</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="/logout">Logout</a>
+  </li>
+
+</ul>
+{% for msg in get_flashed_messages() %}
+ <div class="alert alert-danger" role="alert">
+   <button type="button" class="close" data-dismiss="alert">&times;</button>
+   {{ msg }}
+ </div>
+ {% endfor %}
+{% block content %}
+{% endblock %}
+
+{% endblock %}

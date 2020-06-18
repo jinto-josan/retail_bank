@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+{% block page_content %}
+<form method="post">
+    <h3>Choose required fields for generating statement</h3>
+    <table>
+        <tbody>
+        <tr>
+        <td style="border:5px solid white">Account ID</td>
+        <td style="border:5px solid white"><input type="text" pattern="\d*" minlength="9" maxlength="9" name="account_id" placeholder="account_id" required/></td>
+        </tr>
+        <tr>
+        <td style="border:5px solid white">Last N transactions</td>
+            <td style="border:5px solid white"><select name="n_transactions" id="select_loop">
+                <script language="javascript" type="text/javascript">
+                    for(var d=1;d<=10;d++)
+                        {
+                            document.write("<option value="+d+">"+d+"</option>");
+                        }
+                </script>
+                </select>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+        <br>
+        <p>Or</p>
+        <br>
+    <table><tbody>
+        <tr>
+            <td style="border:5px solid white">Start Date  </td>
+            <td style="border:5px solid white"><input type="date" name="start_date" placeholder="start date"/></td>
+        </tr>
+        <tr>
+            <td style="border:5px solid white">End Date  </td>
+            <td style="border:5px solid white"><input type="date" name="end_date" placeholder="end date"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Submit</button> <button type='submit' class="btn"><a href="account_query1">Back</a></button>
+</form>
+{% endblock %}

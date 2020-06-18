@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block page_content %}
+
+<form method="post">
+    <table>
+        <tbody>
+        <tr>
+        <td>Source Account</td>
+        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="source_id" placeholder="account_id"/></td>
+        </tr>
+        <tr>
+        <td>Target Account</td>
+        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="target_id" placeholder="account_id"/></td>
+        </tr>
+        <tr>
+        <td>Transfer amount</td>
+        <td><input type="number" name="transfer_amount" placeholder="enter amount"/></td>
+        </tr>
+        </tbody>
+    </table>
+    <button type="submit" class="btn btn-primary">Transfer</button> <a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+</form>
+{% endblock %}
