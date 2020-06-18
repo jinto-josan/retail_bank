@@ -2,15 +2,16 @@
 {% block page_content %}
 <form method="post">
     <h3>Choose required fields for generating statement</h3>
-    <table>
+    <div class="row justify-content-center col-auto">
+    <table class="table table-hover text-center">
         <tbody>
         <tr>
-        <td style="border:5px solid white">Account ID</td>
-        <td style="border:5px solid white"><input type="text" pattern="\d*" minlength="9" maxlength="9" name="account_id" placeholder="account_id" required/></td>
+        <td class="table-info">Account ID</td>
+        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="account_id" placeholder="account_id" required/></td>
         </tr>
         <tr>
-        <td style="border:5px solid white">Last N transactions</td>
-            <td style="border:5px solid white"><select name="n_transactions" id="select_loop">
+        <td class="table-info">Last N transactions</td>
+            <td><select name="n_transactions" id="select_loop">
                 <script language="javascript" type="text/javascript">
                     for(var d=1;d<=10;d++)
                         {
@@ -20,23 +21,25 @@
                 </select>
             </td>
         </tr>
-        </tbody>
-    </table>
+<!--        </tbody>-->
+<!--    </table>-->
 
         <br>
-        <p>Or</p>
+        <tr><td align="center" colspan="2"><b>Or</b></td></tr>
         <br>
-    <table><tbody>
+<!--    <table class="table table-hover text-center"><tbody>-->
         <tr>
-            <td style="border:5px solid white">Start Date  </td>
-            <td style="border:5px solid white"><input type="date" name="start_date" placeholder="start date"/></td>
+            <td class="table-info">Start Date  </td>
+            <td ><input type="date" name="start_date" placeholder="start date"/></td>
         </tr>
         <tr>
-            <td style="border:5px solid white">End Date  </td>
-            <td style="border:5px solid white"><input type="date" name="end_date" placeholder="end date"/></td>
+            <td class="table-info">End Date  </td>
+            <td ><input type="date" name="end_date" placeholder="end date"/></td>
         </tr>
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Submit</button> <button type='submit' class="btn"><a href="account_query1">Back</a></button>
+    </div>
+    <button type="submit" class="btn btn-primary center-block">Submit</button><br>
 </form>
+<a href="account_query1"><button type='submit' class="btn btn-primary center-block">Back</button></a>
 {% endblock %}

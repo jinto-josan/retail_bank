@@ -1,15 +1,17 @@
 {% extends "layout.html" %}
 {% block page_content %}
 <h2>Deposit successful</h2>
-<table>
+<div class="row justify-content-center col-auto">
+<table class="table table-hover text-center">
     <tbody>
     {% for i, v in data %}
             <tr>
-                <td>{{i}}</td>
+                <td class="table-info">{{i}}</td>
                 <td>{{v}}</td>
             </tr>
         {% endfor %}
     </tbody>
 </table>
-<a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+<a href="account_query1"><button type="submit" class="btn btn-primary center-block">Back</button></a>
+</div>
 {% endblock %}

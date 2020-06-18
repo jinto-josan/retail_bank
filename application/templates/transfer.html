@@ -1,23 +1,27 @@
 {% extends "layout.html" %}
 {% block page_content %}
-
+<h2>Transfer Amount</h2>
 <form method="post">
-    <table>
+    <div class="row justify-content-center col-auto">
+    <table class="table table-hover text-center">
         <tbody>
         <tr>
-        <td>Source Account</td>
-        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="source_id" placeholder="account_id"/></td>
+        <td class="table-info">Source Account</td>
+        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="source_id" placeholder="account_id" required/></td>
         </tr>
         <tr>
-        <td>Target Account</td>
-        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="target_id" placeholder="account_id"/></td>
+        <td class="table-info">Target Account</td>
+        <td><input type="text" pattern="\d*" minlength="9" maxlength="9" name="target_id" placeholder="account_id" required/></td>
         </tr>
         <tr>
-        <td>Transfer amount</td>
-        <td><input type="number" name="transfer_amount" placeholder="enter amount"/></td>
+        <td class="table-info">Transfer amount</td>
+        <td><input type="number" name="transfer_amount" placeholder="enter amount" required/></td>
         </tr>
         </tbody>
     </table>
-    <button type="submit" class="btn btn-primary">Transfer</button> <a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
-</form>
+    </div>
+        <button type="submit" class="btn btn-primary center-block">Transfer</button>
+
+</form><br>
+<a href="account_query1" ><button type="submit" class="btn btn-primary center-block">Back</button></a>
 {% endblock %}

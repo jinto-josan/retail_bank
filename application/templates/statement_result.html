@@ -1,14 +1,15 @@
 {% extends "layout.html" %}
 {% block page_content %}
 <h2>Account Statement</h2>
-<table id="toExcel" class="uitable">
+<div class="row justify-content-center col-auto">
+<table id="toExcel" class="uitable table table-hover text-center">
     <thead>
     <tr>
-        <th>Account ID</th>
-        <th>Balance</th>
-        <th>Credit or Debit</th>
-        <th>Description</th>
-        <th>Date</th>
+        <th class="table-warning">Account ID</th>
+        <th class="table-warning">Balance</th>
+        <th class="table-warning">Credit or Debit</th>
+        <th class="table-warning">Description</th>
+        <th class="table-warning">Date</th>
     </tr>
     </thead>
     <tbody>
@@ -21,8 +22,9 @@
         {% endfor %}
     </tbody>
 </table>
-<button type="button" onclick="exceller()" class="btn btn-success">Download as EXCEL</button>
-<a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+    </div>
+<button type="button" onclick="exceller()" class="btn btn-success center-block">Download as EXCEL</button><br>
+<a href="account_query1"><button type="submit" class="btn btn-primary center-block">Back</button></a>
 <script>
   function exceller() {
     var uri = 'data:application/vnd.ms-excel;base64,',

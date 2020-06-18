@@ -1,21 +1,24 @@
 {% extends "layout.html" %}
 {% block page_content %}
+<h3>Deposit Amount</h3>
 <form method="post">
-<table>
+<div class="row justify-content-center col-auto border-top-0">
+<table class="table table-hover text-center">
     <tbody>
         {% for i, v in data %}
             <tr>
-                <td>{{i}}</td>
+                <td class="table-info">{{i}}</td>
                 <td>{{v}}</td>
             </tr>
         {% endfor %}
         <tr>
-            <td>Deposit Amount</td>
+            <td class="table-info">Deposit Amount</td>
             <td><input type="number" name="deposit" placeholder="enter deposit amount" required/></td>
         </tr>
     </tbody>
 </table>
-    <input type="hidden" name="account_id" value="{{data[1][1]}}"/>
-    <button type="submit" class="btn btn-primary">Submit</button><a href="account_query1"><button type="submit" class="btn btn-primary">Back</button></a>
+    <input type="hidden" name="account_id" value="{{data[1][1]}}"/></div>
+    <button type="submit" class="btn btn-primary center-block">Submit</button><br>
 </form>
+<a href="account_query1"><button type="submit" class="btn btn-primary center-block">Back</button></a>
 {% endblock %}
