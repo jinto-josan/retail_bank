@@ -26,13 +26,13 @@
   <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Status</a>
     <div class="dropdown-menu">
-      <a class="dropdown-item" href="#">Customer Status</a>
+      <a class="dropdown-item" href="/status_customer">Customer Status</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/status_account">Account Status</a>
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Logout</a>
+    <a class="nav-link" href="/logout">Logout</a>
   </li>
 </ul>
 {% for msg in get_flashed_messages() %}

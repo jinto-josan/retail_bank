@@ -26,7 +26,10 @@ class Customer(db.Model):
     # account_type = db.Column(db.String(64))
     status = db.Column(db.String(64))
     message = db.Column(db.String(64))
-    # last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
+
+
+
+    last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
 
 class Accounts(db.Model):
