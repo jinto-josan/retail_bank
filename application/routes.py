@@ -51,7 +51,7 @@ def login():
                 return redirect(url_for('create_customer'))
             else:
                 return redirect(url_for('account_query1'))
-    return render_template('login.html', form = form)
+    return render_template('login.html', form = form,title='Login')
 
 @app.route('/logout')
 def logout():
@@ -88,7 +88,7 @@ def create_customer():
                 flash('Customer creation error','danger')
                 return redirect(url_for('create_customer'))
         else:
-            return render_template('create_customer.html')
+            return render_template('create_customer.html',title='Add Customer')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))
@@ -125,14 +125,17 @@ def update_customer():
                 customer_id = request.values.get('customer_id')
                 c = 0
                 if len(request.values.get('customer_name')) >= 1:
+                    print(customer_id)
                     sql = text('update customers set {} = :x where customer_id = :y'.format('customer_name'))
                     db.engine.execute(sql, x=request.values.get('customer_name'), y=customer_id)
                     c += 1
                 if len(str(request.values.get('age'))) >= 1:
+                    print('change age')
                     sql = text('update customers set {} = :x where customer_id = :y'.format('age'))
                     db.engine.execute(sql, x=request.values.get('age'), y=customer_id)
                     c += 1
                 if len(request.values.get('address_lane_1')) >= 1:
+                    print('change address')
                     sql = text('update customers set {} = :x where customer_id = :y'.format('address_lane_1'))
                     db.engine.execute(sql, x=request.values.get('address_lane_1'), y=customer_id)
                     c += 1
@@ -222,7 +225,7 @@ def create_account():
         else:
             for key in form.errors:
                 flash('Invalid '+ key,'danger')
-        return render_template('create_account.html', form = form)
+        return render_template('create_account.html', form = form,title='Create Account')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))
@@ -277,7 +280,7 @@ def delete_account():
         else:
             for key in form.errors:
                 flash('Invalid '+ key,'danger')
-        return render_template('delete_account.html', form = form)
+        return render_template('delete_account.html', form = form,title='Delete Account')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))
@@ -297,7 +300,7 @@ def status_account():
     if 'user_id' in session and session['user_type'] == 'E':
         rslt = db.engine.execute("SELECT customer_id,account_type,status,message,last_updated,account_id FROM accounts")
         rows = [row for row in rslt]
-        return render_template('status_account.html',accounts=rows)
+        return render_template('status_account.html',accounts=rows,title='Account Status')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))
@@ -316,7 +319,7 @@ def status_customer():
     if 'user_id' in session and session['user_type'] == 'E':
         rslt = db.engine.execute("SELECT customer_ssn,status,message,last_updated,customer_id FROM customers")
         rows = [row for row in rslt]
-        return render_template('status_customer.html',accounts=rows)
+        return render_template('status_customer.html',accounts=rows,title='Customer Status')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))
@@ -399,7 +402,7 @@ def choose_transaction():
         else:
             for key in form.errors:
                 flash('Invalid '+ key,'danger')
-        return render_template('choose_transaction.html', form = form)
+        return render_template('choose_transaction.html', form = form,title='Choose Account')
     else:
         flash('You are not logged in ','warning')
         return redirect(url_for('login'))

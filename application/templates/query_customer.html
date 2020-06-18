@@ -2,19 +2,16 @@
 
 {% block content %}
 
-<form name="create_account" action = "" method = "POST">
+<fieldset>
+<form  action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
-  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
-    {{ form.customer_id.label }}<br>
-    {{ form.customer_id }}
-    <br>
-    <h3> OR </h3>
-    <br>
-    {{ form.ssn.label }}<br>
-    {{ form.ssn }}
-    <br>
-    <br>
-    {{ form.submit }}
-  </div>
-  </form>
+  {{ render_field(form.customer_id) }}
+  <h1 class="text-center"> OR </h1>
+  {{ render_field(form.ssn) }}
+  <br>
+
+  <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+
+</form>
+</fieldset>
  {% endblock %}

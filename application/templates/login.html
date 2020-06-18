@@ -7,15 +7,13 @@
    {{ msg }}
  </div>
  {% endfor %}
-<form name="login" action = "" method = "POST">
-  {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
-  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
-     {{ form.login.label }}<br>
-     {{ form.login }}
-     <br>
-     {{ form.password.label }}<br>
-     {{ form.password }}
-     <br>  <br>
-     {{ form.submit }}
-            </div>
+ <fieldset>
+   <form class="form-horizontal" action = "" method = "POST">
+     {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+     {{ render_field(form.login) }}
+     {{ render_field(form.password ) }}
+     <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+
+ </fieldset>
+
  {% endblock %}

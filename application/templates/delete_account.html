@@ -2,19 +2,18 @@
 
 {% block content %}
 
-<form name="create_account" action = "" method = "POST">
+<fieldset>
+<form  action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
-  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
-    {{ form.account_id_choices.label }}<br>
-    {{ form.account_id_choices }}
-    <br>
-    {{ form.account_type.label }}<br>
-    {{ form.account_type(readonly=true) }}
-    <br>
-    <br>
-    {{ form.submit }}
-  </div>
+  {{ render_field(form.account_id_choices) }}
+  <br>
+  {{ form.account_type.label }}
+  {{ form.account_type(readonly=true) }}
+  <br>
+  <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+
 </form>
+</fieldset>
 
 <script>
   let id_select = document.getElementById('account_id_choices');
