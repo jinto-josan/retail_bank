@@ -1,6 +1,7 @@
 {% extends "customer_executive_layout.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 <h2>Update customer</h2>
 <p>please enter the customer_id or customer_ssn that needs to be updated</p>
 <form method="post" id="test-form">
@@ -14,5 +15,33 @@
      <input type="text" pattern="\d*" name="customer_ssn" minlength="9" maxlength="9" placeholder="customer_ssn"/>
    </div>
     <button type="submit" id="sub-button" class="btn btn-primary">submit</button>
+=======
+<form method="post" id="test-form">
+    <div class="justify-content-center col-auto">
+    <table class="table table-borderless text-left">
+        <tbody>
+        <tr>
+   <div class="form-group">
+     <td><label>customer_id</label></td>
+     <td><input type="text" pattern="\d*" name="customer_id" minlength="9" maxlength="9" placeholder="customer_id"/></td>
+   </div>
+            </tr>
+    <tr><td align="center" colspan="2">Or</td></tr>
+        <tr>
+    <div class="form-group">
+     <td><label>customer_ssn</label></td>
+        <td><input type="text" pattern="\d*" name="customer_ssn" minlength="9" maxlength="9" placeholder="customer_ssn"/></td>
+   </div>
+        </tr>
+        <tr>
+    <div class="form-group">
+     <td><button type="submit" id="sub-button" class="btn btn-primary btn-lg">submit</button></td>
+       </div>
+        </tr>
+        </tbody>
+        </table>
+    </div>
+
+>>>>>>> master
 </form>
 {% endblock %}

@@ -8,12 +8,20 @@
  </div>
  {% endfor %}
  <fieldset>
+<<<<<<< HEAD
    <form class="form-horizontal" action = "" method = "POST">
+=======
+   <form class="form-horizontal action = "" method = "POST">
+>>>>>>> master
      {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
      {{ render_field(form.login) }}
      {{ render_field(form.password ) }}
      <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+<<<<<<< HEAD
 
+=======
+</form
+>>>>>>> master
  </fieldset>
 
  {% endblock %}

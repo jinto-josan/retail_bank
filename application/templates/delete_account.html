@@ -3,12 +3,22 @@
 {% block content %}
 
 <fieldset>
+<<<<<<< HEAD
 <form  action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
   {{ render_field(form.account_id_choices) }}
   <br>
   {{ form.account_type.label }}
   {{ form.account_type(readonly=true) }}
+=======
+<form  class='form-horizontal' action = "" method = "POST">
+  {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+  {{ render_field(form.account_id_choices) }}
+  <br>
+  {{ render_field(form.account_id_choices) }}
+  {{ form.account_type.label }}
+  {{ form.account_type(readonly=true,style="color :black;") }}
+>>>>>>> master
   <br>
   <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
 

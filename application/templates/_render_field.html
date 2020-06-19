@@ -3,6 +3,7 @@
   <label for="{{ field.name }}" class="col-lg-2 control-label">{{ field.label.text }}</label>
     <div class="col-lg-5">
       {{ field(class='form-control', **kwargs)|safe }}
+<<<<<<< HEAD
       <ul>
         {% for error in field.errors %}
 
@@ -11,4 +12,16 @@
         {% endfor %}
       </div><br><br>
 </div>
+=======
+      {% if field.errors %}
+       <ul class=errors>
+         {% for error in field.errors %}
+         <li style="color:red;">{{ error }}</li>
+         {% endfor %}
+       </ul>
+       {% endif %}
+     </div>
+</div>
+<br><br>
+>>>>>>> master
 {% endmacro %}

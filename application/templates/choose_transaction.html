@@ -1,6 +1,7 @@
 {% extends "cashier_layout.html" %}
 
 {% block content %}
+<<<<<<< HEAD
 <form action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
   <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
@@ -19,4 +20,17 @@
 
   </div>
 </form>
+=======
+<fieldset>
+  <form class="form-horizontal action = "" method = "POST">
+    {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+    {{ render_field(form.account_id_choices) }}
+    <input id="deposit" class="btn btn-primary btn-lg" name="{{ form.deposit.name }}" type="submit" value="{{ form.deposit.label.text }}">
+    <input id="withdraw" class="btn btn-primary btn-lg" name="{{ form.withdraw.name }}" type="submit" value="{{ form.withdraw.label.text }}">
+    <input id="transfer" class="btn btn-primary btn-lg" name="{{ form.transfer.name }}" type="submit" value="{{ form.transfer.label.text }}">
+</form>
+</form>
+</fieldset>
+
+>>>>>>> master
 {% endblock %}

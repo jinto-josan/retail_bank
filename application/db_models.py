@@ -26,9 +26,12 @@ class Customer(db.Model):
     # account_type = db.Column(db.String(64))
     status = db.Column(db.String(64))
     message = db.Column(db.String(64))
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> master
     last_updated = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
 
@@ -36,7 +39,12 @@ class Accounts(db.Model):
     __tablename__ = 'accounts'
     sno = db.Column(db.Integer, primary_key=True)
     customer_id = db.Column(db.Integer, db.ForeignKey('customers.customer_id'))
+<<<<<<< HEAD
     request = db.relationship("Customer") # if this is not done then customer id wont be displayed in the accounts table
+=======
+    request = db.relationship("Customer")
+    # if this is not done then customer id wont be displayed in the accounts table
+>>>>>>> master
     account_id = db.Column(db.Integer, index=True)
     balance = db.Column(db.Integer)
     balance_credit_debit = db.Column(db.String(64))
