@@ -2,7 +2,7 @@
 
 {% block content %}
 <form method="post">
-<table>
+<table class="table table-borderless text-left">
     <tbody>
     {% for i, v in data %}
         <tr>
@@ -35,9 +35,11 @@
     </tr>
         <input type="hidden" name="customer_id" value="{{data[0][1]}}"/>
 
+        <tr>
+            <td><button type="submit" id="sub-button" class="btn btn-primary btn-lg">submit</button></td>
+          </tr>
     </tbody>
 </table>
-<button type="submit" id="sub-button" class="btn btn-primary">submit</button>
+
 </form>
 {% endblock %}
-

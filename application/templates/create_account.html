@@ -2,23 +2,16 @@
 
 {% block content %}
 
-<form name="create_account" action = "" method = "POST">
+<fieldset>
+  <form  class="form-horizontal" action = "" method = "POST">
   {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
-  <div style = "font-size:18px;" font-weight:bold; margin-left:150px;>
-    {{ form.customer_id.label }}<br>
-    {{ form.customer_id }}
-    <br>
-    {{ form.account_id.label }}<br>
-    {{ form.account_id }}
-    <br>
-    {{ form.account_type.label }}<br>
-    {{ form.account_type }}
-    <br>
-    <br>
-    {{ form.dep_amt.label }}<br>
-    {{ form.dep_amt }}
-    <br>
-    <br>
-    {{ form.submit }}
-  </div>
+    {{ render_field(form.customer_id) }}
+    {{ render_field(form.account_id) }}
+    {{ render_field(form.account_type) }}
+    {{ render_field(form.dep_amt) }}
+    <input id="submit" class="btn btn-primary btn-lg" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+
+
+    </form>
+  </fieldset>
  {% endblock %}

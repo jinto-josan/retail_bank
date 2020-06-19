@@ -1,11 +1,9 @@
 {% extends "customer_executive_layout.html" %}
 
 {% block content %}
-<h2 align="center">Update customer</h2>
-<p align="center">Please enter the customer_id or customer_ssn that needs to be updated</p>
 <form method="post" id="test-form">
     <div class="justify-content-center col-auto">
-    <table class="table table-hover text-center">
+    <table class="table table-borderless text-left">
         <tbody>
         <tr>
    <div class="form-group">
@@ -20,9 +18,14 @@
         <td><input type="text" pattern="\d*" name="customer_ssn" minlength="9" maxlength="9" placeholder="customer_ssn"/></td>
    </div>
         </tr>
+        <tr>
+    <div class="form-group">
+     <td><button type="submit" id="sub-button" class="btn btn-primary btn-lg">submit</button></td>
+       </div>
+        </tr>
         </tbody>
         </table>
     </div>
-    <button type="submit" id="sub-button" class="btn btn-primary center-block">submit</button>
+
 </form>
 {% endblock %}

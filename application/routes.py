@@ -23,38 +23,38 @@ def login():
         if session['user_type'] == 'E':
             return redirect(url_for('create_customer'))
         else:
-            return redirect(url_for('account_details'))
+            return redirect(url_for('account_query1'))
     form = LoginForm()
     if form.validate_on_submit():
-        sql = text("SELECT user_type FROM userstore WHERE loginid = :x AND password = :y")
-        # print(form.login.data)
-        # print(form.password.data)
-        rslt = db.engine.execute(sql, x=form.login.data, y=form.password.data)
+        sql = text( "SELECT user_type FROM userstore WHERE loginid = :x AND password = :y")
+        print(form.login.data)
+        print(form.password.data)
+        rslt = db.engine.execute(sql,x=form.login.data,y=form.password.data)
         user_type = [row[0] for row in rslt]
-        # id = Userstore.query.filter(and_(Userstore.loginid == form.login.data,Userstore.
-        # password==form.password.data)).first()
-        form.login.data = ''
-        # print(user_type)
+        form.login.data=''
         if len(user_type) == 0:
-            flash('Entered Login ID or Password is Wrong !')
+            flash('Entered Login ID or Password is Wrong !','danger')
         else:
-            session['user_id'] = form.login.data
-            session['user_type'] = user_type[0]
+            session['user_id']=form.login.data
+            session['user_type']=user_type[0]
             if user_type[0] == 'E':
                 return redirect(url_for('create_customer'))
             else:
                 return redirect(url_for('account_query1'))
-    return render_template('login.html', form=form)
+    else:
+        for key in form.errors:
+            flash('Invalid ' + key)
+
+    return render_template('login.html', form = form,title='Login')
 
 
 @app.route('/logout')
 def logout():
     if 'user_id' in session:
-        session.pop('user_id', None)
-        session.pop('user_type', None)
-        flash('Logged out successfully ')
+        session.pop('user_id',None)
+        session.pop('user_type',None)
+        flash('Logged out successfully ','success')
     return redirect(url_for('login'))
-
 
 @app.route('/create_customer', methods=['GET', 'POST'])
 def create_customer():
@@ -82,7 +82,7 @@ def create_customer():
                 flash('Customer creation error')
                 return redirect(url_for('create_customer'))
         else:
-            return render_template('create_customer.html')
+            return render_template('create_customer.html',title='create_customer')
     else:
         flash('You are not logged in ')
         return redirect(url_for('login'))
@@ -113,8 +113,8 @@ def update_customer():
                     return render_template('update_customer_details.html', data=data)
                 except Exception as e:
                     print(e)
-                    flash('there is no such customer with that id')
-                    return render_template('update_customer.html')
+                    flash('Customer Id doesnot exist','danger')
+                    return redirect(url_for('update_customer'))
             else:
                 customer_id = request.values.get('customer_id')
                 c = 0
@@ -146,14 +146,12 @@ def update_customer():
                     db.engine.execute(sql, x=request.values.get('state'), z=customer_id, y=current_date)
                     c += 1
                 if c:
-                    flash('your updates are in progress')
-                else:
-                    flash("you didn't make any changes")
+                    flash('Customer update initiated successfully','success')
                 return render_template('customer_executive_layout.html')
         else:
-            return render_template('update_customer.html')
+            return render_template('update_customer.html',title='Update Customer')
     else:
-        flash('You are not logged in ')
+        flash('You are not logged in ','warning')
         return redirect(url_for('login'))
 
 
@@ -178,7 +176,7 @@ def delete_customer():
             else:
                 sql = text("DELETE FROM customers WHERE customer_id = :x")
                 db.engine.execute(sql, x=request.values.get('customer_id'))
-                flash('customer deleted')
+                flash('Customer deletion successful','success')
                 return render_template('customer_executive_layout.html')
         else:
             return render_template('delete_customer.html')
@@ -201,7 +199,7 @@ def create_account():
                 acnt_sql = text("SELECT  customer_id FROM accounts WHERE account_id = :x ")
                 acnt_rslt = db.engine.execute(acnt_sql, x=form.account_id.data)
                 if len([row[0] for row in acnt_rslt]) == 0:
-                    flash('Account creation initiated successfully')
+                    flash('Account creation initiated successfully','success')
                     customer_id = form.customer_id.data
                     account_id = form.account_id.data
                     account_type = form.account_type.data
@@ -213,12 +211,12 @@ def create_account():
                                             last_updated=datetime.datetime.now()))
                     db.session.commit()
                 else:
-                    flash('Account already exists')
+                    flash('Account already exists','warning')
                 return redirect(url_for('create_account'))
         else:
             for key in form.errors:
-                flash('Invalid ' + key)
-        return render_template('create_account.html', form=form)
+                flash('Invalid ' + key,'danger')
+        return render_template('create_account.html', form=form,title='Create Account')
     else:
         flash('You are not logged in ')
         return redirect(url_for('login'))
@@ -236,18 +234,18 @@ def query_customer():
                 rslt = db.engine.execute(sql, x=cid, y=ssn)
                 id = [row[0] for row in rslt]
                 if len(id) == 0:
-                    flash('Customer Id or Customer SSN not found !')
+                    flash('Customer Id or Customer SSN not found !','danger')
                 else:
                     return redirect(url_for('delete_account', idx=id))
             else:
-                flash('Please provide either customer id or ssid')
+                flash('Please provide either customer id or ssid','warning')
             return redirect(url_for('query_customer'))
         else:
             for key in form.errors:
-                flash('Invalid ' + key)
-        return render_template('query_customer.html', form=form)
+                flash('Invalid ' + key,'danger')
+        return render_template('query_customer.html', form=form,title='Customer Query')
     else:
-        flash('You are not logged in ')
+        flash('You are not logged in ','warning')
         return redirect(url_for('login'))
 
 
@@ -262,22 +260,22 @@ def delete_account():
         chcs = list(zip(ids, ids))
         # print(chcs)
         form.account_id_choices.choices = chcs
-        form.account_type.data = [row[0] for row in
+        form.account_type.data = 'Savings' if [row[0] for row in
                                   db.engine.execute("SELECT account_type FROM accounts WHERE account_id= :x",
-                                                    x=chcs[0][0])][0]
+                                                    x=chcs[0][0])][0] =='S' else 'Current'
         if form.validate_on_submit():
             # print('deleted')
             db.engine.execute("DELETE FROM accounts WHERE account_id= :x", x=form.account_id_choices.data)
             db.session.commit()
-            flash('Account deletion initiated successfully')
+            flash('Account deletion initiated successfully','success')
             return redirect(url_for('delete_account', idx=cid))
         else:
             for key in form.errors:
                 flash('Invalid ' + key)
-        return render_template('delete_account.html', form=form)
+        return render_template('delete_account.html', form=form,title="Delete Account")
     else:
         flash('You are not logged in ')
-        return redirect(url_for('login'))
+        return redirect(url_for('login','warning'))
 
 
 @app.route('/get_type/<account_id>', methods=['GET', 'POST'])
@@ -294,10 +292,10 @@ def status_account():
         rslt = db.engine.execute("SELECT customer_id,account_type,status,message,last_updated,account_id FROM accounts "
                                  "GROUP BY account_id")
         rows = [row for row in rslt]
-        return render_template('status_account.html', accounts=rows)
+        return render_template('status_account.html', accounts=rows,title='Account Status')
     else:
         flash('You are not logged in ')
-        return redirect(url_for('login'))
+        return redirect(url_for('login','warning'))
 
 
 @app.route('/status_account_particular/<account_id>', methods=['GET', 'POST'])
@@ -313,10 +311,10 @@ def status_customer():
     if 'user_id' in session and session['user_type'] == 'E':
         rslt = db.engine.execute("SELECT customer_ssn,status,message,last_updated,customer_id FROM customers")
         rows = [row for row in rslt]
-        return render_template('status_customer.html', accounts=rows)
+        return render_template('status_customer.html', accounts=rows,title='Customer Status')
     else:
         flash('You are not logged in ')
-        return redirect(url_for('login'))
+        return redirect(url_for('login'),'warning')
 
 
 @app.route('/status_customer_particular/<customer_id>', methods=['GET', 'POST'])
