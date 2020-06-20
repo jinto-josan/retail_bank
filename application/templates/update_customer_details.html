@@ -1,9 +1,8 @@
 {% extends "customer_executive_layout.html" %}
 
 {% block content %}
-<h3>Update Customer</h3>
 <form method="post">
-<table class="table text-center">
+<table class="table text-center table-borderless">
     <tbody>
     {% for i, v in data %}
         <tr>
@@ -38,7 +37,7 @@
 
     </tbody>
 </table>
-<button type="submit" id="sub-button" class="btn btn-primary center-block">submit</button>
+<button type="submit" id="sub-button" class="btn btn-primary center-block btn-lg">submit</button>
 </form>
 {% endblock %}
 

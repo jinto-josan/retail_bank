@@ -1,11 +1,11 @@
 {% extends "layout.html" %}
 
-{% block page_content %}
-<ul class="nav">
+{% block navs %}
+
 
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Customer Management</a>
-    <div class="dropdown-menu">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="font-size :22px; color: #F72585;" role="button" aria-haspopup="true" aria-expanded="false">Customer Management</a>
+    <div class="dropdown-menu" style="font-size :20px; color: #F72585;">
       <a class="dropdown-item" href="/create_customer">Create Customer</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/update_customer">Update Customer</a>
@@ -15,8 +15,8 @@
   </li>
 
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Account Management</a>
-    <div class="dropdown-menu">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="font-size :22px; color: #F72585;" role="button" aria-haspopup="true" aria-expanded="false">Account Management</a>
+    <div class="dropdown-menu" style="font-size :20px; color: #F72585;">
       <a class="dropdown-item" href="/create_account">Create Account</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/query_customer">Delete Account</a>
@@ -24,18 +24,20 @@
   </li>
 
   <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Status</a>
-    <div class="dropdown-menu">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" style="font-size :22px; color: #F72585;" role="button" aria-haspopup="true" aria-expanded="false">Status</a>
+    <div class="dropdown-menu" style="font-size :20px; color: #F72585;">
       <a class="dropdown-item" href="/status_customer">Customer Status</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/status_account">Account Status</a>
     </div>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/logout">Logout</a>
+    <a class="nav-link" style="font-size :22px; color: #F72585;" href="/logout">Logout</a>
   </li>
-</ul>
-{% for msg in get_flashed_messages() %}
+
+{% endblock %}
+{% block page_content %}
+{% for catg,msg in get_flashed_messages(with_categories=true) %}
  <div class="alert alert-{{ catg }}" role="alert">
    <button type="button" class="close" data-dismiss="alert">&times;</button>
    {{ msg }}

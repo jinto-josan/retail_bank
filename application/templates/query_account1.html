@@ -1,26 +1,37 @@
 {% extends "cashier_layout.html" %}
 
 {% block content %}
-<form name='query_account1' action = "" method = "POST">
-  {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
-  <div style = "font-size:18px; font-weight:bold; margin-left:150px;">
-    {{ form.customer_id.label }}<br>
-    {{ form.customer_id }}
-    <br>
-    <h4> OR </h4>
-    <br>
-    {{ form.ssn.label }}<br>
-    {{ form.ssn }}
-    <br>
-    <h4> OR </h4>
-    <br>
-    <br>
-    {{ form.account_id.label }}<br>
-    {{ form.account_id }}
-    <br>
-    <br>
-    {{ form.submit }}
-  </div>
-  </form>
+<!--<form name='query_account1' action = "" method = "POST">-->
+<!--  {{ form.csrf_token }} &lt;!&ndash; this is very important so that validate functions work in the view&ndash;&gt;-->
+<!--  <div style = "font-size:18px; font-weight:bold; margin-left:150px;">-->
+<!--    {{ form.customer_id.label }}<br>-->
+<!--    {{ form.customer_id }}-->
+<!--    <br>-->
+<!--    <h4> OR </h4>-->
+<!--    <br>-->
+<!--    {{ form.ssn.label }}<br>-->
+<!--    {{ form.ssn }}-->
+<!--    <br>-->
+<!--    <h4> OR </h4>-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    {{ form.account_id.label }}<br>-->
+<!--    {{ form.account_id }}-->
+<!--    <br>-->
+<!--    <br>-->
+<!--    {{ form.submit }}-->
+<!--  </div>-->
+<!--  </form>-->
+<fieldset>
+  <form class="form-horizontal" action = "" method = "POST">
+    {{ form.csrf_token }} <!-- this is very important so that validate functions work in the view-->
+    {{ render_field(form.customer_id) }}
+    <h2 class="text-center"> OR </h2>
+    {{ render_field(form.ssn ) }}
+    <h2 class="text-center"> OR </h2>
+    {{ render_field(form.account_id ) }}
+    <input id="submit" class="btn btn-primary btn-lg center-block" name="{{ form.submit.name }}" type="submit" value="{{ form.submit.label.text }}">
+</form>
+</fieldset>
 
 {% endblock %}

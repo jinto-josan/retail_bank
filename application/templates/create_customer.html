@@ -2,15 +2,15 @@
 
 {% block content %}
 
-<h2 align="center">Create Customer</h2>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<!-- <h2 align="center">Create Customer</h2> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+ -->
 
 <div class="row justify-content-center col-auto">
     <div class="text-center">
-<form method="post" id="test-form">
-    <table class="table text-center">
+<form method="post" class='form-horizontal' id="test-form">
+    <table class="table text-center table-borderless">
    <tr>
 <td>customer_id</td>
      <td><input type="text" pattern="\d*" name="customer_id" minlength="9" maxlength="9" placeholder="customer_id" required/></td>
@@ -48,7 +48,7 @@
         <td><input type="text" name="message" placeholder="message"/></td>
     </tr>
         </table>
-    <button type="submit" id="sub-button" class="btn btn-primary center-block">submit</button>
+    <button type="submit" id="sub-button" class="btn btn-primary center-block btn-lg">submit</button>
     </form>
 
 </div>

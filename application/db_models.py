@@ -2,11 +2,11 @@ from application import db
 
 
 class Userstore(db.Model):
-    __tablename__ ='userstore'
+    __tablename__ = 'userstore'
     loginid = db.Column(db.String(64), primary_key=True)
     password = db.Column(db.String(64))
     user_type = db.Column(db.String(64))
-    #timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
+    # timestamp = db.Column(db.DateTime('YYYY-MM-DDTHH:MM:SS'))
 
 
 class Customer(db.Model):
