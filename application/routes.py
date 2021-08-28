@@ -25,7 +25,7 @@ def login():
         if session['user_type'] == 'E':
             return redirect(url_for('create_customer'))
         else:
-            return redirect(url_for('account_details'))
+            return redirect(url_for('account_query1'))
     form = LoginForm()
     if form.validate_on_submit():
         sql = text("SELECT user_type FROM userstore WHERE loginid = :x AND password = :y")
